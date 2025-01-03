@@ -86,7 +86,15 @@ if submit:
             response= scanResume(docx_path)
             list.append(response)
             st.subheader(response)
-    pd.DataFrame(list).to_csv('cvList.csv')
+    
+    df = pd.DataFrame(list)
+    csv_file = df.to_csv()
+    st.download_button(
+        label="Download CSV",
+        data=csv_file,
+        file_name="cvList.csv",
+        mime="text/csv",
+    )
 
 
     
